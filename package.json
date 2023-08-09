@@ -6,8 +6,11 @@
   "repository": "https://github.com/natty-light/batch.git",
   "author": "natty-light <75773163+natty-light@users.noreply.github.com>",
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@types/node": "^20.4.9",
+    "eslint": "^8.46.0",
+    "jest": "^29.6.2",
     "typescript": "^5.1.6"
   }
 }
