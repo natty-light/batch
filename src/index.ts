@@ -1,31 +1,4 @@
-type BatchedJobExecutor<T, K> = (records: T[]) => Promise<K>;
-type BatchedJobSuccessCallback<K> = (result: K, progress?: BatchedJobProgressInformation) => void;
-type BatchedJobErrorCallback = (err: unknown) => void;
-type BatchedJobReducer<K, U> = (result: K, accumulator: U) => U;
-type BatchedJobReducerOptions<K, U> = {
-  reducer: BatchedJobReducer<K, U>
-  accumulator: U
-}
-type BatchedJobOptions<K> = {
-  // Size of chunk for each batch
-  transactionSize: number;
-  // Function to be called on successful batch transaction
-  onBatchSuccess?: BatchedJobSuccessCallback<K>;
-  // Function to be called on failed batch transaction
-  onBatchError?: BatchedJobErrorCallback
-  // Should a failed transaction be retried 
-  retry: boolean
-}
-type BatchedJobProgressInformation = {
-  // Number of records remaining to be processed
-  remaining: number,
-  // Which chunk is being processed
-  step: number,
-  // Value passed in BatchedJobOptions
-  transactionSize: number,
-  // Number of records to be processed
-  total: number,
-}
+import { BatchedJobExecutor, BatchedJobOptions, BatchedJobReducerOptions } from './types';
 
 /**
  * Splits records into batches of length specified in batchingOptions.transactionSize, then calls executor on
@@ -40,8 +13,6 @@ type BatchedJobProgressInformation = {
  * @param batchingOptions Struct containing configuration options for batching.
  * @returns Concatenated results of all batched jobs
  */
-
-
 async function batchJob<T, K, U>(
   executor: BatchedJobExecutor<T, K>,
   records: T[],
