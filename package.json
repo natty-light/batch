@@ -1,6 +1,6 @@
 {
   "name": "job-batcher",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Generalized interface for executing asynchronous data read/write jobs in batches",
   "main": "index.js",
   "repository": "https://github.com/natty-light/batch.git",
