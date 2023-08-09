@@ -1,5 +1,5 @@
 {
-  "name": "job-batcher",
+  "name": "batch-async",
   "version": "0.1.0",
   "description": "Generalized interface for executing asynchronous data read/write jobs in batches",
   "main": "index.js",
