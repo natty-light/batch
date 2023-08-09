@@ -1,0 +1,13 @@
+{
+  "name": "batch",
+  "version": "1.0.0",
+  "description": "Generalized interface for executing asynchronous data read/write jobs in batches",
+  "main": "index.js",
+  "repository": "https://github.com/natty-light/batch.git",
+  "author": "natty-light <75773163+natty-light@users.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^20.4.9",
+    "typescript": "^5.1.6"
+  }
+}
