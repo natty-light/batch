@@ -1,6 +1,6 @@
 {
   "name": "type-batch",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generalized interface for executing asynchronous data read/write jobs in batches, all in TypeScript",
   "main": "index.js",
   "repository": "https://github.com/natty-light/batch.git",
