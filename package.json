@@ -1,6 +1,6 @@
 {
   "name": "type-batch",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Generalized interface for executing asynchronous data read/write jobs in batches, all in TypeScript",
   "main": "./target/main.js",
   "types": "./target/main.d.ts",
