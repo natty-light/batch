@@ -38,6 +38,7 @@ export async function batchJob<T, K, U>(
       remaining -= batch.length;
       result = reducer(batchResult, result);
       if (onBatchSuccess) onBatchSuccess(batchResult, { remaining, total, step, transactionSize })
+      step++
     } catch (err) {
       if (onBatchError) onBatchError
       if (!retry) break;
