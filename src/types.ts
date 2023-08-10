@@ -1,4 +1,5 @@
-export type BatchedJobExecutor<T, K> = (records: T[]) => Promise<K>;
+export type BatchedJobExecutor<T, K> = (records: T[]) => Promise<BatchedJobReturn<K, unknown>>;
+export type BatchedJobReturn<K, E = undefined> = { ok: true, result: K } | {ok: false, error?: E}
 export type BatchedJobSuccessCallback<K> = (result: K, progress?: BatchedJobProgressInformation) => void;
 export type BatchedJobErrorCallback = (err: unknown) => void;
 export type BatchedJobReducer<K, U> = (result: K, accumulator: U) => U;
@@ -26,3 +27,4 @@ export type BatchedJobProgressInformation = {
   // Number of records to be processed
   total: number,
 }
+

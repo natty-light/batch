@@ -2,11 +2,13 @@ import { batchJob } from '../src/index';
 import type { BatchedJobExecutor, BatchedJobOptions, BatchedJobReducerOptions } from '../src/types'
 
 describe('batch', () => {
-
   const executor: BatchedJobExecutor<number, number> = async (records: number[]) => {
     return new Promise((resolve) => {
       let initialVal = 0;
-      setTimeout(() => resolve(records.reduce((val, acc) => val + acc, initialVal)),100)
+      setTimeout(() => resolve({
+        ok: true,
+        result: records.reduce((val, acc) => val + acc, initialVal)
+      }),10)
     })
   };
 
@@ -34,3 +36,4 @@ describe('batch', () => {
       expect(onError).not.toBeCalled();
   })
 })
+

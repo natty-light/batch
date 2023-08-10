@@ -23,7 +23,7 @@ export async function batchJob<T, K, U>(
   const { transactionSize, onBatchSuccess, onBatchError, retry } = batchingOptions;
   const total = records.length;
 
-  let result: U = accumulator;
+  let endResult: U = accumulator;
   let remaining = total;
   let step = 0;
 
@@ -33,18 +33,19 @@ export async function batchJob<T, K, U>(
     const batch = records.slice(start, end);
 
     if (batch.length === 0) break;
-    try {
       const batchResult = await executor(batch);
+      if (!batchResult.ok) {
+        const { error } = batchResult;
+        if (onBatchError) onBatchError(error)
+        if (!retry) break;
+        else continue;
+      }
+
+      const { result } = batchResult;
       remaining -= batch.length;
-      result = reducer(batchResult, result);
-      if (onBatchSuccess) onBatchSuccess(batchResult, { remaining, total, step, transactionSize })
+      endResult = reducer(result, endResult);
+      if (onBatchSuccess) onBatchSuccess(result, { remaining, total, step, transactionSize })
       step++
-    } catch (err) {
-      if (onBatchError) onBatchError
-      if (!retry) break;
-    }
   }
-
-  return result;
+  return endResult;
 };
-
