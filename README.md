@@ -1,1 +1,1 @@
-Generalized interface for executing asynchronous data read/write jobs in batches, all in TypeScript
+Generalized interface for executing asynchronous data read/write jobs in batches, all in TypeScript. Provides two functions, one for sequential asynchronous processing, and one for concurrent asychronous processing. Usage will depend on the ability of the data consumer/provider to handle concurrent jobs. Also provides suite of relevant types.
