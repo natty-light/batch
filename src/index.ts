@@ -1,4 +1,4 @@
-import { BatchedJobExecutor, BatchedJobOptions, BatchedJobReducerOptions } from './types';
+import type { BatchedJobExecutor, BatchedJobOptions, BatchedJobReducerOptions } from './types';
 
 /**
  * Splits records into batches of length specified in batchingOptions.transactionSize, then calls executor on
@@ -13,7 +13,7 @@ import { BatchedJobExecutor, BatchedJobOptions, BatchedJobReducerOptions } from 
  * @param batchingOptions Struct containing configuration options for batching.
  * @returns Concatenated results of all batched jobs
  */
-async function batchJob<T, K, U>(
+export async function batchJob<T, K, U>(
   executor: BatchedJobExecutor<T, K>,
   records: T[],
   reducerOptions: BatchedJobReducerOptions<K, U>,
