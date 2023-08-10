@@ -1,4 +1,4 @@
-import { batchJob, concurrentBatchJob } from '../src/index';
+import { batchJob, concurrentBatchJob } from '../src/main';
 import type { BatchedJobExecutor, BatchedJobOptions, BatchedJobReducerOptions } from '../src/types'
 
 describe('batch', () => {
